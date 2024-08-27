@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import globalContext from "../context/context";
-import crypto from "crypto";
+import {v4 as uuidv4} from "uuid";
 
 const CreateTodo = () => {
   const [value, setValue] = useState("");
@@ -19,10 +19,14 @@ const CreateTodo = () => {
           }
           value.trim();
           const newTodo = {
-            id: crypto.randomUUID(),
+            id: uuidv4(),
             text: value,
             completed: false,
           };
+
+          console.log(newTodo);
+          
+
           setTodos([...todos, newTodo]);
           setValue("");
         }}
